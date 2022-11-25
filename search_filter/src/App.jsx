@@ -3,6 +3,7 @@ import { useState,useRef } from 'react'
 function App() {
   const 
     [items, setItems] = useState([]),
+    test = "teste const",
     inputRef = useRef(),
     addItem = (e) => {
       e.preventDefault();
@@ -13,10 +14,8 @@ function App() {
       });
       inputRef.current.value = ""
     };
-
-
   return (
-    <div className="App">
+    <>
       Search
       <input type={"search"}/>
       <br/>
@@ -26,12 +25,18 @@ function App() {
         <button type='submit'>Add</button>
       </form>
       <br/>
-      <h3>Items:</h3>
-      {items.map((item,index) => {
-        <div>{item}-{index} </div>
-      })}
-    </div>
+      <br/>
+      <div>
+        <h3>Items:</h3>
+        <ul>
+          {items.map((item,index) => 
+              <li key={index}>{item}</li>
+          )}
+        
+        </ul>
+      </div>
+    </>
   )
-}
+};
 
-export default App
+export default App;
